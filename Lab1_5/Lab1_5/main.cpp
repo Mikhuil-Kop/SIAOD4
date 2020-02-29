@@ -32,9 +32,10 @@ int main(int argc, const char * argv[]) {
     else
         cout << "Такого узла не существует";
     
-    //vector<int> *vec = tree->CalculateDepths();
-    //cout << "Результат второй задачи: " << vec->at(vec->size() - 1) << "\n";
-    //delete vec;
+    vector<int> *vec = tree->CalculateDepths();
+    cout << "Результат второй задачи: ";
+    cout << vec->at(vec->size() - 1) << "\n";
+    delete vec;
     
     delete tree;
     return 0;

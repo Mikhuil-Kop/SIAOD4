@@ -70,7 +70,7 @@ bool Tree::Delete(int number){
 
 
 vector<int>* Tree::CalculateDepths(){
-    vector<int>* vec;
+    vector<int>* vec = new vector<int>();
     Father->CalculateDepths(0, vec);
     return vec;
 }
