@@ -2,7 +2,6 @@
 Найдите вершины, у которых высоты поддеревьев равны,
 а количество потомков в правом и левом поддеревьях не равны.
  */
-
 #include <iostream>
 #include "Tree.hpp"
 #include "Node.hpp"
@@ -11,7 +10,7 @@ using namespace std;
 
 
 int main(int argc, const char * argv[]) {
-    Tree* tree = new Tree();
+    Tree* tree = new Tree(cin, cout);
     cout << "Получившееся дерево:\n" + tree->ToString() + "\n";
     
     vector<int> *vec = tree->Calculate();

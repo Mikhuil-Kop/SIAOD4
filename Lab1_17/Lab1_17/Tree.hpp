@@ -11,7 +11,7 @@ class Tree{
 private:
     Node* Father;
 public:
-    Tree();
+    Tree(istream& in, ostream& out);
     ~Tree();
     
     vector<int>* Calculate();

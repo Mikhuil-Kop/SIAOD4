@@ -1,18 +1,23 @@
 #include "Node.hpp"
 #include "Tree.hpp"
 #include <vector>
-#include "stack"
+#include <ostream>
+#include <istream>
+using namespace std;
 
-Node::Node(){
-    val = rand()%1000;
+Node::Node(int val, istream& in, ostream& out){
+    this->val = val;
     
-    if(rand()%100 > 60)
-        left = new Node();
+    int v1, v2;
+    out << "Введите наследников " << val << " 0 = NULL\n";
+    in >> v1 >> v2;
+    if(v1 != 0)
+        left = new Node(v1, in, out);
     else
         left = nullptr;
     
-    if(rand()%100 > 60)
-        right = new Node();
+    if(v2 != 0)
+        right = new Node(v2, in, out);
     else
         right = nullptr;
 }
@@ -34,9 +39,15 @@ void Node::Calculate(int& treeDepth, int& childsCount, vector<int>* vec){
         right->Calculate(rightDepth, rightCount, vec);
     
     if(leftDepth > rightDepth)
-        treeDepth = leftDepth;
+        treeDepth = leftDepth + 1;
     else
-        treeDepth = rightDepth;
+        treeDepth = rightDepth + 1;
+    
+    childsCount = leftCount + rightCount + 1;
+    
+    //добавление
+    if(leftCount != rightCount && leftDepth == rightDepth)
+        vec->push_back(this->val);
 }
 
 string Node:: ToString(string tabs){
@@ -55,3 +66,6 @@ string Node:: ToString(string tabs){
     
     return s;
 }
+
+//1 2 3 5 6 0 0 0 0 7 0 0 0
+//100 10 10 2 3 5 6 0 0 0 0 7 0 0 0 2 3 5 6 0 0 0 0 7 0 0 0

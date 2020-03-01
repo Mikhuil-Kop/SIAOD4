@@ -1,9 +1,14 @@
 #include "Tree.hpp"
 #include "Node.hpp"
+#include <ostream>
+#include <istream>
+using namespace std;
 
-Tree::Tree(){
-    srand(time(0));
-    Father = new Node();
+Tree::Tree(istream& in, ostream& out){
+    int val;
+    out << "Введите номер корня:\n";
+    in >> val;
+    Father = new Node(val, in, out);
 }
 
 Tree::~Tree(){

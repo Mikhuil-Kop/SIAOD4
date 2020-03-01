@@ -7,12 +7,12 @@ using namespace std;
 class Tree;
 
 class Node{
-public:
+public: ostream* st;
     Node* left, *right;
     int val = 0;
     
     Node(int val, Node* left = nullptr, Node* right = nullptr);
-    Node();
+    Node(int val, istream& in, ostream& out);
     ~Node();
     
     Node* GetLeft();
