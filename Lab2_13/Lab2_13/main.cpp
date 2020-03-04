@@ -3,12 +3,12 @@
 using namespace std;
 
 int main(int argc, const char * argv[]) {
-    cout << "Введите длину\n";
+    cout << "Введите количество узлов\n";
     int len;
     cin >> len;
     
     graph g(true, len);
-    cout << "Введите количество узлов графа, а потом их веса:\n";
+    cout << "Введите веса:\n";
     cin >> g;
     
     cout << "\nПолучившийся граф:\n";

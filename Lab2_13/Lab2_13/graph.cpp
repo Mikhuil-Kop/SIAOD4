@@ -110,22 +110,28 @@ graph graph::get_frame(){
         l.pop_front();
         
         //поиск и слияние
+        list<int> *f1 = nullptr, *f2 = nullptr;
+        
         for(list<int>& f : frames){
-            bool c1 = false, c2 = false;
             //нахождение узлов в списке
             for(int i: f){
-                if(i == now.x)
-                    c1 = true;
-                if(i == now.y)
-                    c2 = true;
+                if(i == now.x) f1 = &f;
+                if(i == now.y) f2 = &f;
             }
-            //если было повторение
-            if(c1 && c2)
+            
+            //Оба узла найдены. Слияние
+            if(f1 != nullptr && f2 != nullptr){
+                if(f1 != f2){
+                    for(int i: *f2)
+                        f1->push_back(i);
+                    frames.remove(*f2);
+                    
+                    exit.edges[now.x][now.y] = now.w;
+                    exit.edges[now.y][now.x] = now.w;
+                }
                 break;
+            }
         }
-        
-        exit.edges[now.x][now.y] = now.w;
-        exit.edges[now.y][now.x] = now.w;
     }
     
     return exit;
